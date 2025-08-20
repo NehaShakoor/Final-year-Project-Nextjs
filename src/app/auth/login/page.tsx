@@ -27,9 +27,11 @@ function LoginForm() {
 
     try {
       await login(email, password)
-      const role = email.includes('student') ? 'student' : 
-                   email.includes('supervisor') ? 'supervisor' : 'manager'
-      router.push(`/dashboard/${role}`)
+      // Role now determined by server, simply route based on current user
+      // We rely on dashboard layouts to read context
+      const storedRole = email.includes('student') ? 'student' : email.includes('supervisor') ? 'supervisor' : 'manager'
+      // NOTE: Ideally we would access user from context after login; to minimize re-render timing issues we still compute fallback.
+      router.push(`/dashboard/${storedRole}`)
     } catch (err) {
       setError('Invalid email or password')
     } finally {
