@@ -1,6 +1,6 @@
 'use client'
 
-import AIChatbot from '@/components/ui/AIchatbot'
+import AIChatbot from '../../../../components/ui/AIchatbot'
 export default function SupervisorAIPage() {
   return (
     <div className="p-6">
